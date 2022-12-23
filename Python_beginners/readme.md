@@ -1,0 +1,1 @@
+# Arquivos de apoio de conteúdo do curso de Python para iniciantes da Microsoft
