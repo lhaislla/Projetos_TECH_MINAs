@@ -3,25 +3,25 @@ import aiohttp
 import asyncio
 
 async def load_data(session, delay):
-    print(f'Starting {delay} second timer')
+    print(f'Iniciando{delay} segundo timporizador')
     async with session.get(f'http://httpbin.org/delay/{delay}') as resp:
         text = await resp.text()
-        print(f'Completed {delay} second timer')
+        print(f'Concluido {delay} segundo timporizador')
         return text
 
 async def main():
-    # Start the timer
+     # Inicia o cronômetro
     start_time = default_timer()
 
-    # Creating a single session
+    # Simular outro processamento
     async with aiohttp.ClientSession() as session:
-        # Setup our tasks and get them running
+        # Vamos pegar nossos valores
         two_task = asyncio.create_task(load_data(session, 2))
         three_task = asyncio.create_task(load_data(session, 3))
 
-        # Simulate other processing
+         # Imprima nossos resultados
         await asyncio.sleep(1)
-        print('Doing other work')
+        print('Fazendo outro trabalho')
 
         # Let's go get our values
         two_result = await two_task
@@ -29,6 +29,6 @@ async def main():
 
         # Print our results
         elapsed_time = default_timer() - start_time
-        print(f'The operation took {elapsed_time:.2} seconds')
+        print(f'A operação levou {elapsed_time:.2} segundos' )
 
 asyncio.run(main())
